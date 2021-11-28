@@ -12,13 +12,13 @@
 # %% [markdown]
 # Ne touchez rien, remplacez simplement les ???
 #
-# Prénom: ???
+# Prénom: Adrien
 #
-# Nom: ???
+# Nom: Delpy
 #
-# Langage-avancé (Python ou C++): ???
+# Langage-avancé (Python ou C++): Python
 #
-# Adresse mail: ???
+# Adresse mail: adrien.delpy@mines-paristech.fr
 #
 # ***
 
