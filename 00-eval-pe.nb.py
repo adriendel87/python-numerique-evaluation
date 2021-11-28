@@ -36,6 +36,9 @@
 
 # %%
 # votre code ici
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
 
 # %% [markdown]
 # ## Lecture des données
@@ -50,7 +53,13 @@
 # Affichez la forme et les deux dernières lignes de la data-frame.
 
 # %%
-# votre code ici
+df_aux = pd.read_csv('defect_data.csv')
+
+df = pd.read_csv('defect_data.csv', index_col = df_aux.columns[0], usecols = [k for k in range(10)])
+
+print(f'la forme est {df.shape}')
+
+df.tail(2)
 
 # %% [markdown]
 # ### Parenthèse sur descripteurs morphologiques 
@@ -152,6 +161,16 @@ print(df.loc[id_to_plot])
 # On l'affiche
 plot_defect(id_to_plot)
 
+# %%
+id = df.index[df['sphericity'].argmax()]
+#print(df.loc[id])
+#plot_defect(id)
+
+# %%
+id = df.index[df['lambda2'].argmax()]
+print(df.loc[id])
+plot_defect(id)
+
 # %% [markdown]
 # N'oubliez pas d'aller rendre visite au défaut avec l'id `4022` qui a une forme rigolote, avec ses petites excroissances. 
 
@@ -160,11 +179,27 @@ plot_defect(id_to_plot)
 print(df.loc[4022])
 plot_defect(4022)
 
+
 # %% [markdown]
 # On vous parlait juste avant de défauts de morphologie proche ! Et si une simple distance euclidienne en dimension 9 fonctionnait ? Calculez le défaut le plus proche du défaut `4022` dans l'espace de dimension 9, et tracez-le ! Se ressemblent-ils ?
 
 # %%
-# Votre code ici
+def distance_euclidienne(a, b):
+    S = 0
+    for i in range (len(a)):
+        S += (a[i]-b[i])**2
+    return np.sqrt(S)
+
+
+closer_indice = 0
+for row_indice in range(4040):
+    if (distance_euclidienne(df.loc[4022], df.iloc[row_indice]) < distance_euclidienne(df.loc[4022], df.iloc[closer_indice])) and (distance_euclidienne(df.loc[4022], df.iloc[row_indice]) > 0):
+        closer_indice = row_indice 
+#le and ... > 0 dans la boucle if est nécessaire pour ne pas avoir le défaut 4022 comme plus proche de lui même
+        
+print(df.iloc[closer_indice])
+
+plot_defect(2705)
 
 # %% [markdown]
 # **Eh non!** Le défaut le plus proche du défaut `4022` est une patatoïde quelconque. Deux explications sont possibles :
