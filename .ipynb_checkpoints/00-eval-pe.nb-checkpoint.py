@@ -190,8 +190,16 @@ def distance_euclidienne(a, b):
         S += (a[i]-b[i])**2
     return np.sqrt(S)
 
- = 1
-for i in range
+
+closer_indice = 0
+for row_indice in range(4040):
+    if (distance_euclidienne(df.loc[4022], df.iloc[row_indice]) < distance_euclidienne(df.loc[4022], df.iloc[closer_indice])) and (distance_euclidienne(df.loc[4022], df.iloc[row_indice]) > 0):
+        closer_indice = row_indice 
+#le and ... > 0 dans la boucle if est nécessaire pour ne pas avoir le défaut 4022 comme plus proche de lui même
+        
+print(df.iloc[closer_indice])
+
+plot_defect(2705)
 
 # %% [markdown]
 # **Eh non!** Le défaut le plus proche du défaut `4022` est une patatoïde quelconque. Deux explications sont possibles :

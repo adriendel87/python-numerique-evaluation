@@ -213,6 +213,9 @@ print(df.loc[796])
 plot_defect(796)
 
 # %%
+#la distance euclidienne ne semble pas pertinente pour caractériser la différence de morphologie entre 2 défauts.
+
+# %%
 # On revient en mode de visu standard après avoir évalué cette cellule
 # %matplotlib inline
 reload(plt)
