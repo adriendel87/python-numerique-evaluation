@@ -212,13 +212,14 @@ plot_defect(2705)
 print(df.loc[796])
 plot_defect(796)
 
-# %%
-#la distance euclidienne ne semble pas pertinente pour caractériser la différence de morphologie entre 2 défauts.
+# %% [markdown]
+# la distance euclidienne ne semble pas pertinente pour caractériser la différence de morphologie entre 2 défauts.
 
 # %%
 # On revient en mode de visu standard après avoir évalué cette cellule
 # %matplotlib inline
 reload(plt)
+
 
 # %% [markdown]
 # ## Visualisation des données
@@ -239,6 +240,9 @@ reload(plt)
 
 # %%
 # votre code ici
+def histogram(serie, nbins=10):
+    plt.hist(serie)
+
 
 # %%
 # pour vérifier
@@ -248,6 +252,7 @@ histogram(df['radius1'], nbins=10)
 # pour vérifier
 # c'est bien si votre fonction marche aussi avec une dataframe
 histogram(df[['radius1']], nbins=10)
+
 
 # %% [markdown]
 # #### *Bonus* : un histogramme adaptable aux goûts de chacun
@@ -267,6 +272,9 @@ histogram(df[['radius1']], nbins=10)
 
 # %%
 # votre code ici
+def histogram2(serie, nbins=10):
+    pd.hist(serie)
+
 
 # %%
 # pour vérifier
@@ -278,6 +286,7 @@ if 'histogram2' in globals():
            hist_kwargs={'color': 'red'})
 else:
     print("vous avez choisi de ne pas faire le bonus")
+
 
 # %% [markdown]
 # ### Tracé de nuages de points
@@ -292,6 +301,10 @@ else:
 
 # %%
 # votre code ici
+def correlation_plot(serie1, serie2):
+    plt.plot(serie1, serie2)
+    plt.show()
+
 
 # %%
 # pour vérifier
