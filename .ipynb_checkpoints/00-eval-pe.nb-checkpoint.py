@@ -302,13 +302,14 @@ else:
 # %%
 # votre code ici
 def correlation_plot(serie1, serie2):
-    plt.plot(serie1, serie2)
+    plt.plot(serie1, serie2, '.')
     plt.show()
 
 
 # %%
 # pour vérifier
 correlation_plot(df['lambda1'], df['lambda2'])
+
 
 # %% [markdown]
 # #### *Bonus* les nuages de points pour l'utilisateur casse-pieds (ou daltonien ;) )
@@ -326,6 +327,12 @@ correlation_plot(df['lambda1'], df['lambda2'])
 
 # %%
 # votre code ici
+def correlation_plot2(serie1, serie2, xlabel=None, ylabel=None, plot_kwargs={'marker': '.', 'color': 'b'}):
+    plt.plot(serie1, serie2, marker=plot_kwargs['marker'], color=plot_kwargs['color'])
+    plt.xlabel(xlabel)
+    plt.ylabel(ylabel)
+    plt.show()
+
 
 # %%
 # pour vérifier 
@@ -351,6 +358,11 @@ else:
 
 # %%
 # Votre code ici
+X = [1/3, 1/2, 1/2, 1/3]
+Y= [1/3, 1/4, 1/2, 1/3]
+plt.plot(X, Y, linestyle = '--', color = 'red')
+correlation_plot(df['lambda1'], df['lambda2'])
+
 
 # %% [markdown]
 # ### Affichage de tous les plots des colonnes
@@ -366,6 +378,17 @@ else:
 
 # %%
 # votre code ici
+def plot2D(df)  :
+    for column in df.columns :
+        histogram(df[column])
+        plt.show()
+    for column1 in df.columns :
+        for column2 in df.columns :
+            if column2 != column1 :
+                correlation_plot2(df[column1], df[column2], xlabel=column1, ylabel=column2)
+                plt.show()
+    
+
 
 # %%
 # pour corriger
